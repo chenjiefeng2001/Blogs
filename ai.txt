@@ -1,0 +1,40 @@
+# AI Training & Crawling Policy
+# ==============================
+# This file follows the ai.txt standard for declaring
+# restrictions on AI agents and LLM training crawlers.
+
+User-agent: *
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: OmgiliBot
+Disallow: /
+
+# This repository's content MUST NOT be used for:
+# - Training of Large Language Models (LLMs)
+# - Fine-tuning of any AI model
+# - Commercial AI product development
+# - Any form of automated content extraction for AI purposes

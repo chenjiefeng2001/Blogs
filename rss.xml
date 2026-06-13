@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Developer Blog</title>
+    <link>https://chenjiefeng2001.github.io/Blogs</link>
+    <description>探索技术，记录思考 — 全自动化的现代静态博客引擎</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 13 Jun 2026 20:12:14 GMT</lastBuildDate>
+    <atom:link href="https://chenjiefeng2001.github.io/Blogs/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title></title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Blender%2FBlender%E5%BB%BA%E6%A8%A1%E6%8C%87%E5%8D%97</link>
+      <guid isPermaLink="false">Blender/Blender建模指南</guid>
+      <description></description>
+      <pubDate>Invalid Date</pubDate>
+      <category>Blender</category>
+    </item>
+    <item>
+      <title></title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Computer%20Graphic%2FPBR</link>
+      <guid isPermaLink="false">Computer Graphic/PBR</guid>
+      <description></description>
+      <pubDate>Invalid Date</pubDate>
+      <category>Computer Graphic</category>
+    </item>
+    <item>
+      <title></title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Computer%20Graphic%2FRTR</link>
+      <guid isPermaLink="false">Computer Graphic/RTR</guid>
+      <description></description>
+      <pubDate>Invalid Date</pubDate>
+      <category>Computer Graphic</category>
+    </item>
+    <item>
+      <title> Voidisum</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Game%20Design%2FVoidisum</link>
+      <guid isPermaLink="false">Game Design/Voidisum</guid>
+      <description>第一周周报</description>
+      <pubDate>Thu, 11 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Game Design</category>
+    </item>
+    <item>
+      <title> 从零开始构建游戏引擎</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Game%20Engine%2FGame%20Engine%20build%20from%20zero</link>
+      <guid isPermaLink="false">Game Engine/Game Engine build from zero</guid>
+      <description>本系列将从零开始教你如何构建一个简单的2D游戏引擎</description>
+      <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Game Engine</category>
+    </item>
+    <item>
+      <title> 视觉小说项目周报 Week 1</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Game%20Journal%2F2026-06-10</link>
+      <guid isPermaLink="false">Game Journal/2026-06-10</guid>
+      <description>第一周周报</description>
+      <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Game Journal</category>
+    </item>
+    <item>
+      <title></title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Numerical%20Algorithms%2FNumerical%20Recipies%20in%20Cpp</link>
+      <guid isPermaLink="false">Numerical Algorithms/Numerical Recipies in Cpp</guid>
+      <description></description>
+      <pubDate>Invalid Date</pubDate>
+      <category>Numerical Algorithms</category>
+    </item>
+    <item>
+      <title> 软件设计哲学 A Philosophy of Software Design</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/others%2F2026-06-10%20%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6</link>
+      <guid isPermaLink="false">others/2026-06-10 软件设计哲学</guid>
+      <description>本文基于软件设计哲学:</description>
+      <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
+      <category>others</category>
+    </item>
+    <item>
+      <title>JavaScript 闭包深入理解</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/javascript%2Fjs-closures</link>
+      <guid isPermaLink="false">javascript/js-closures</guid>
+      <description>闭包是 JavaScript 中最核心的概念之一，本文从原理到实践深入剖析闭包的工作机制。</description>
+      <pubDate>Tue, 09 Jun 2026 00:00:00 GMT</pubDate>
+      <category>javascript</category>
+    </item>
+    <item>
+      <title> 从零开始的WebGPU开发指南</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/webgpu%2FWebGPU%20Source%20Book</link>
+      <guid isPermaLink="false">webgpu/WebGPU Source Book</guid>
+      <description>本文主要是对《 WebGPU Source Book High-Performance Graphic and Machine Learning in the Browser》一书的总结:</description>
+      <pubDate>Tue, 09 Jun 2026 00:00:00 GMT</pubDate>
+      <category>webgpu</category>
+    </item>
+    <item>
+      <title>告别硬编码：我的动态博客</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/first-post</link>
+      <guid isPermaLink="false">first-post</guid>
+      <description>采用全自动化的脚本扫描，以后只要丢入 Markdown 文件，网站就会自动更新。</description>
+      <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
+      <category>未分类</category>
+    </item>
+  </channel>
+</rss>
