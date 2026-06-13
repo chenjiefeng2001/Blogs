@@ -5,7 +5,7 @@
     <link>https://chenjiefeng2001.github.io/Blogs</link>
     <description>探索技术，记录思考 — 全自动化的现代静态博客引擎</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 13 Jun 2026 21:07:46 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 21:51:12 GMT</lastBuildDate>
     <atom:link href="https://chenjiefeng2001.github.io/Blogs/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title></title>
@@ -46,14 +46,6 @@
       <description>本系列将从零开始教你如何构建一个简单的2D游戏引擎</description>
       <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
       <category>Game Engine</category>
-    </item>
-    <item>
-      <title> 视觉小说项目周报 Week 1</title>
-      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Game%20Journal%2F2026-06-10</link>
-      <guid isPermaLink="false">Game Journal/2026-06-10</guid>
-      <description>第一周周报</description>
-      <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
-      <category>Game Journal</category>
     </item>
     <item>
       <title></title>
