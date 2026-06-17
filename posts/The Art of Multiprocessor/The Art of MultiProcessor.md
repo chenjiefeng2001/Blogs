@@ -261,3 +261,20 @@ public:
 $$
 write_A(flag[A]=true)\rightarrow read_A(flag[B]==false)\rightarrow write_B(flag[B]=true)\rightarrow read_B(flag[A]==false)\rightarrow write_A(flag[A]=true)
 $$
+
+#### 双锁算法
+
+```c++
+
+```
+
+双锁算法是不够的，因为在很多情况下会卡住除非线程并发运行。当然，该算法并不是毫无用处：如果线程并发运行，`lock()`方法会成功，单锁和双锁类互为补充——每一种在导致一种卡住的情况下尝试另一种会成功
+
+### Peterson锁
+
+这里我们将这两个结合起来，构造一个无饥饿的锁算法。
+
+```c++
+```
+
+**引理**
