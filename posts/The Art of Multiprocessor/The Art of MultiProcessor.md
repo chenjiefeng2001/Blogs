@@ -265,7 +265,61 @@ $$
 #### 双锁算法
 
 ```c++
+#include <mutex>
+#include <memory>
 
+template <typename T>
+class TwoLockQueue {
+private:
+    struct Node {
+        T data;
+        std::unique_ptr<Node> next;
+        Node(T val) : data(std::move(val)), next(nullptr) {}
+        Node() : next(nullptr) {} // 哨兵节点用
+    };
+
+    std::unique_ptr<Node> head; // 指向哨兵节点
+    Node* tail;                 // 指向最后一个节点
+    
+    std::mutex head_mtx;        // 出队锁
+    std::mutex tail_mtx;        // 入队锁
+
+public:
+    TwoLockQueue() {
+        // 初始化时创建一个“哑节点/哨兵节点”，让 head 和 tail 不为空
+        auto dummy = std::make_unique<Node>();
+        tail = dummy.get();
+        head = std::move(dummy);
+    }
+
+    // 入队：只锁尾部
+    void enqueue(T value) {
+        auto newNode = std::make_unique<Node>(std::move(value));
+        Node* p = newNode.get();
+        
+        {
+            std::lock_guard<std::mutex> lock(tail_mtx);
+            tail->next = std::move(newNode);
+            tail = p;
+        }
+    }
+
+    // 出队：只锁头部
+    bool dequeue(T& result) {
+        std::lock_guard<std::mutex> lock(head_mtx);
+        
+        Node* first = head.get();
+        Node* nextNode = first->next.get();
+        
+        if (nextNode == nullptr) {
+            return false; // 队列为空
+        }
+        
+        result = std::move(nextNode->data);
+        head = std::move(first->next); // 移除旧的哨兵，让 nextNode 成为新的哨兵
+        return true;
+    }
+};
 ```
 
 双锁算法是不够的，因为在很多情况下会卡住除非线程并发运行。当然，该算法并不是毫无用处：如果线程并发运行，`lock()`方法会成功，单锁和双锁类互为补充——每一种在导致一种卡住的情况下尝试另一种会成功
@@ -275,6 +329,277 @@ $$
 这里我们将这两个结合起来，构造一个无饥饿的锁算法。
 
 ```c++
+#include <iostream>
+#include <vector>
+#include <atomic>
+#include <thread>
+
+class PetersonLock {
+private:
+    // flag[0] 和 flag[1] 分别表示两个线程是否想进入临界区
+    std::atomic<bool> flag[2];
+    // turn 表示轮到哪个线程
+    std::atomic<int> turn;
+
+public:
+    PetersonLock() {
+        flag[0] = false;
+        flag[1] = false;
+        turn = 0;
+    }
+
+    // threadId 只能是 0 或 1
+    void lock(int id) {
+        int other = 1 - id;
+        
+        flag[id].store(true, std::memory_order_seq_cst); // 1. 我想进
+        turn.store(other, std::memory_order_seq_cst);   // 2. 但我先让你进 (谦让)
+
+        // 3. 自旋等待：
+        // 只有当 对方想进(flag[other]==true) 且 确实轮到对方(turn==other) 时，我才等待
+        while (flag[other].load(std::memory_order_seq_cst) && 
+               turn.load(std::memory_order_seq_cst) == other) {
+            std::this_thread::yield();
+        }
+    }
+
+    void unlock(int id) {
+        // 释放锁：我不想进了
+        flag[id].store(false, std::memory_order_seq_cst);
+    }
+};
+
+// --- 测试代码 ---
+
+int g_counter = 0;
+PetersonLock p_lock;
+
+void worker(int id) {
+    for (int i = 0; i < 10000; ++i) {
+        p_lock.lock(id);
+        g_counter++;
+        p_lock.unlock(id);
+    }
+}
+
+int main() {
+    // Peterson 锁仅适用于 2 个线程
+    std::thread t1(worker, 0);
+    std::thread t2(worker, 1);
+
+    t1.join();
+    t2.join();
+
+    std::cout << "Final Counter: " << g_counter << " (Expected: 20000)" << std::endl;
+    return 0;
+}
 ```
 
-**引理**
+**引理**	Peterson锁算法满足互斥性
+
+​	**假设** 	为了不失一般性，A是最后一个写入受害者字段的线程，即
+$$
+write_B(victim=B)\rightarrow write_A(victim=A)
+$$
+表明A观察到的受害者为A。由于A仍然进入了它的临界区，它必定观察到了`flag[B]`为假，因此我们有
+$$
+write_A(victim=A)\rightarrow read_A(flag[B]==false)
+$$
+将上式两个结合起来得到：
+$$
+write_B(flag[B]=true)\rightarrow write_B(victim=B)\rightarrow write_A(victim=A)\rightarrow read_A(flag[B]==false)
+$$
+这里结果表明$write_B(flag[B]=true)$与$read_A(flag[B]=false)$。这一观察结果导致矛盾，因为在临界区执行之前没有对`flag[B]`进行过其他写操作。
+
+**引理**	Peterson锁算法是无饥饿的
+
+反证法，假设并非如此，
+
+### 死锁说明
+
+尽管Peterson锁算法是无死锁的，但在使用多个Peterson锁的程序中，还可能出现另一种死锁——所有的资源被所有的线程所持有，刚刚好，当一个线程想要获取其他的资源时，会发现全部都在锁死，这样就达成了死锁。
+
+文献中的死锁更多的用于描述代指系统进入一种线程无法继续进度的状态。单锁和双锁算法都容易受到这种死锁的影响。
+
+这种更狭窄的死锁定义与活锁相互区别，在活锁中，两个或者多个线程通过采取破坏其他线程所采取的措施的步骤来积极地阻止彼此前进。当系统处于活锁而不是死锁状态时，有某种方法可以调度线程，以便系统能够前进。
+
+考虑图中的活锁算法，如果两个线程都执行`lock()`方法，它们可能会无限期地重复以下步骤：
+
+- 将各自的标志设置为`true`
+- 检查另一个线程标志为`true`
+- 将各自的标志变量设置为`false`
+- 检查另一个线程的标志为`false`
+
+由于可能存在这种活锁，活锁根据我们的定义并不是无死锁的。
+
+然而，活锁并非按照狭义的定义发生死锁，因为总有一种方法可以调度线程，使得其中之一能够取得进展。
+
+### 过滤锁
+
+```c++
+#include <iostream>
+#include <vector>
+#include <atomic>
+#include <thread>
+
+/**
+ * Filter Lock 实现 (针对 N 个线程)
+ */
+class FilterLock {
+private:
+    int numThreads;
+    // level[i] 表示线程 i 当前所在的层级
+    std::vector<std::atomic<int>> level;
+    // victim[L] 表示进入第 L 层时被“牺牲”的线程 ID
+    std::vector<std::atomic<int>> victim;
+
+public:
+    FilterLock(int n) : numThreads(n), level(n), victim(n) {
+        for (int i = 0; i < n; ++i) {
+            level[i] = 0;
+            victim[i] = 0;
+        }
+    }
+
+    // 注意：过滤锁需要明确知道当前线程的 ID (0 到 n-1)
+    void lock(int threadId) {
+        // 线程需要通过 n-1 层过滤
+        for (int L = 1; L < numThreads; ++L) {
+            level[threadId] = L;       // 线程进入第 L 层
+            victim[L] = threadId;     // 线程成为该层的被牺牲者
+
+            // 等待条件：
+            // 1. 存在其他线程 k 处于更高的层级 (level[k] >= L)
+            // 2. 且当前线程依然是该层的被牺牲者 (victim[L] == threadId)
+            bool keepWait = true;
+            while (keepWait) {
+                keepWait = false;
+                if (victim[L] == threadId) {
+                    for (int k = 0; k < numThreads; ++k) {
+                        if (k != threadId && level[k] >= L) {
+                            keepWait = true;
+                            break;
+                        }
+                    }
+                }
+                if (keepWait) {
+                    std::this_thread::yield(); // 优化：减少 CPU 空转消耗
+                }
+            }
+        }
+    }
+
+    void unlock(int threadId) {
+        // 将层级重置为 0，允许其他在底层等待的线程向上爬
+        level[threadId] = 0;
+    }
+};
+
+// --- 测试代码 ---
+
+int g_counter = 0;
+const int THREAD_COUNT = 5;
+const int ITERATIONS = 1000;
+FilterLock filterLock(THREAD_COUNT);
+
+void worker(int id) {
+    for (int i = 0; i < ITERATIONS; ++i) {
+        filterLock.lock(id);
+        g_counter++; // 临界区
+        filterLock.unlock(id);
+    }
+}
+
+int main() {
+    std::vector<std::thread> threads;
+    for (int i = 0; i < THREAD_COUNT; ++i) {
+        threads.emplace_back(worker, i);
+    }
+
+    for (auto& t : threads) {
+        t.join();
+    }
+
+    std::cout << "线程数: " << THREAD_COUNT << std::endl;
+    std::cout << "预期结果: " << THREAD_COUNT * ITERATIONS << std::endl;
+    std::cout << "实际结果: " << g_counter << std::endl;
+
+    return 0;
+}
+```
+
+
+
+过滤器锁——即将Peterson锁推广适用到`n>2`的线程。它创建了`n-1`个“等待室”，称为级别，线程必须遍历这些级别才能获取到锁。级别需要满足以下两个重要的属性：
+
+1. 至少有一个线程尝试进入级别$l$成功
+2. 如果多个线程尝试进入级别$l$，则至少有一个被阻塞。
+
+Peterson锁使用一个包含两个元素的布尔标志来指示一个线程是否正在进入临界区。而过滤锁将这一概念推广到使用一个n元素的整数级别的数组，其中级别`[A]`的值表示线程`A`试图进入到最高级别。每个线程必须通过n-1个"排斥"级别才能进入其临界区。每个级别$l$都有一个独特的受害者字段，用于“过滤掉”一个线程，将其排除在该级别之外。除非没有线程在该级别或者更高级别。
+
+**引理**	*对于$j$在$0$和$n-1$之间，最多$n-j$个线程已经进入级别j(并且没有随后退出临界区)*
+
+这里的证明很简单，因为前面只有n-j-1  个空位，当占满之后再进入一个即n-j+1个进入级别中，多的无法再进入、
+
+**推论**	*过滤器锁算法满足互斥*
+
+**引理**	过滤器算法是无饥饿的
+
+**推论**	过滤器算法是无死锁的（引理证明的小证明会证明无死锁）
+
+### 公平性
+
+无饥饿特性保证了每个调用`lock()`的线程最终都会进入临界区，但它不保证这需要多长时间，也不保证锁对试图获取它的线程是“公平“的。
+
+如何定义“公平性”？
+
+将锁方法分为一个入口部分和一个等待部分，其中入口部分总是在有限的步骤数内完成。也就是说，在调用`lock()`之后，一个线程在完成入口部分之前可以执行的步骤数有一个固定的上限。
+
+**在一个保证有限步骤内完成的代码片段被称之为有界无等待**。有界无等待的特性是一个强烈的进展要求——没有循环的代码能满足这种特性。(当然有循环也可以通过特定的实现方式来拥有该特性)
+
+**定义**	一个锁是先来先服务式的，如果它的`lock()`方法可以拆分成一个有界无等待的入口部分，然后是一个等待部分，使得当线程A完成它的入口之前，线程B开始它的入口之前，A不会被B超越。
+$$
+if \quad D_A^j \rightarrow D_B^k \quad then \quad CS_A^j \rightarrow CS_B^k
+$$
+对于任何线程A和B以及整数j和k，其中$D_A^j$和$CS_A^j$分别是A执行其j次调用`lock()`方法的入口部分和其j次临界区的区间。
+
+> 请注意，任何既是死锁免疫又是先来服务的对于饥饿也是免疫的。
+
+### Lamport 的Bakery锁算法
+
+对于n线程的互斥问题最优雅的解决方案是Bakery锁算法——通过使用摇号机来发号保证先服务的特性
+
+在Bakery锁中，`flag[A]`是一个布尔标志，指示A是否想进入临界区，而`label[A]`是一个整数，指示线程在进入Bakery时的相对顺序，对于每个线程A。为了获取锁，线程首先将其标志置位，然后通过读取所有线程的标签并生成一个大于所有其读取的新标签来选择一个新标签
+
+从`lock()`方法的调用到写入新标签的代码作为入口：它确定了该线程相对于其他试图获取锁的线程的顺序。并发执行其入口的线程可能会读取相同的标签并选择相同的新标签。
+$$
+((label[i],i)<<(label[j],j())\\
+if \ and \ only \ if \\
+label[i]<label0[j] \ or \ label[i]==label[j] \  and \  i<j
+$$
+自释放锁不会重置`label[]`，因此很容易看出每个线程的标签保持严格的递增。
+
+*有趣的是，在入口和等待部分，线程异步并且以任意顺序读取标签*
+
+**引理**	Bakery锁算法是无死锁的。
+
+**推论**	Bakery锁算法是无饥饿的
+
+**引理**	Bakery锁算法满足互斥
+
+上述引理和推论可以推出Bakery算法满足互斥
+
+### 有界时间戳
+
+这里有一个很重要的点：**Bakery锁中的标签会无限增长，因此在一个长期运行的系统中，我们可能需要担心溢出问题**。
+
+如果某个线程的标签字段从大数字静默地回绕到0，那么先来服务的属性将不成立。
+
+在后面的章节中，我们讨论如何使用计数器对线程进行排序，甚至产生唯一ID的构造。
+
+在Bakery锁中，标签充当时间戳：*它们为争用线程建立顺序。非正式地说，我们需要确保如果一个线程在另一个线程之后获取标签，那后者拥有更大的标签*。
+
+一个线程需要两种能力：
+
+- 读取其他线程地时间戳(扫描)
+- 给自己分配一个更晚的时间戳(标记)

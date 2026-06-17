@@ -5,7 +5,7 @@
     <link>https://chenjiefeng2001.github.io/Blogs</link>
     <description>探索技术，记录思考 — 全自动化的现代静态博客引擎</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 17 Jun 2026 15:46:58 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2026 23:29:13 GMT</lastBuildDate>
     <atom:link href="https://chenjiefeng2001.github.io/Blogs/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>Blender建模指南</title>
@@ -32,20 +32,28 @@
       <category>Computer Graphic/RTR</category>
     </item>
     <item>
-      <title>Numerical Recipies in C++</title>
-      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Numerical%20Algorithms%2FNumerical%20Recipies%20in%20Cpp</link>
-      <guid isPermaLink="false">Numerical Algorithms/Numerical Recipies in Cpp</guid>
-      <description>有关于数值算法的书籍阅读笔记</description>
-      <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
-      <category>Numerical Algorithms</category>
-    </item>
-    <item>
       <title> 从零开始构建游戏引擎</title>
       <link>https://chenjiefeng2001.github.io/Blogs/#/post/Game%20Engine%2FGame%20Engine%20build%20from%20zero</link>
       <guid isPermaLink="false">Game Engine/Game Engine build from zero</guid>
       <description>本系列将从零开始教你如何构建一个简单的2D游戏引擎</description>
       <pubDate>Sat, 13 Jun 2026 00:00:00 GMT</pubDate>
       <category>Game Engine</category>
+    </item>
+    <item>
+      <title></title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Game%20Engine%2FMulti-thread%20Game%20Engine%20Design</link>
+      <guid isPermaLink="false">Game Engine/Multi-thread Game Engine Design</guid>
+      <description></description>
+      <pubDate>Invalid Date</pubDate>
+      <category>Game Engine</category>
+    </item>
+    <item>
+      <title>Numerical Recipies in C++</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Numerical%20Algorithms%2FNumerical%20Recipies%20in%20Cpp</link>
+      <guid isPermaLink="false">Numerical Algorithms/Numerical Recipies in Cpp</guid>
+      <description>有关于数值算法的书籍阅读笔记</description>
+      <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Numerical Algorithms</category>
     </item>
     <item>
       <title></title>
