@@ -5,7 +5,7 @@
     <link>https://chenjiefeng2001.github.io/Blogs</link>
     <description>探索技术，记录思考 — 全自动化的现代静态博客引擎</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 13 Jun 2026 22:30:03 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2026 13:56:11 GMT</lastBuildDate>
     <atom:link href="https://chenjiefeng2001.github.io/Blogs/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>Blender建模指南</title>
@@ -32,12 +32,36 @@
       <category>Computer Graphic/RTR</category>
     </item>
     <item>
+      <title>Numerical Recipies in C++</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Numerical%20Algorithms%2FNumerical%20Recipies%20in%20Cpp</link>
+      <guid isPermaLink="false">Numerical Algorithms/Numerical Recipies in Cpp</guid>
+      <description>有关于数值算法的书籍阅读笔记</description>
+      <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Numerical Algorithms</category>
+    </item>
+    <item>
       <title> 从零开始构建游戏引擎</title>
       <link>https://chenjiefeng2001.github.io/Blogs/#/post/Game%20Engine%2FGame%20Engine%20build%20from%20zero</link>
       <guid isPermaLink="false">Game Engine/Game Engine build from zero</guid>
       <description>本系列将从零开始教你如何构建一个简单的2D游戏引擎</description>
       <pubDate>Sat, 13 Jun 2026 00:00:00 GMT</pubDate>
       <category>Game Engine</category>
+    </item>
+    <item>
+      <title></title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Reinforcement%20Learning%2FIntroduction%20Deep%20Reinforcement%20Learning</link>
+      <guid isPermaLink="false">Reinforcement Learning/Introduction Deep Reinforcement Learning</guid>
+      <description></description>
+      <pubDate>Invalid Date</pubDate>
+      <category>Reinforcement Learning</category>
+    </item>
+    <item>
+      <title>The Art of MultiProcessor</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/The%20Art%20of%20Multiprocessor%2FThe%20Art%20of%20MultiProcessor</link>
+      <guid isPermaLink="false">The Art of Multiprocessor/The Art of MultiProcessor</guid>
+      <description>采用全自动化的脚本扫描，以后只要丢入 Markdown 文件，网站就会自动更新。</description>
+      <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
+      <category>The Art of Multiprocessor</category>
     </item>
     <item>
       <title> 软件设计哲学 A Philosophy of Software Design</title>
@@ -62,14 +86,6 @@
       <description>本文主要是对《 WebGPU Source Book High-Performance Graphic and Machine Learning in the Browser》一书的总结:</description>
       <pubDate>Tue, 09 Jun 2026 00:00:00 GMT</pubDate>
       <category>webgpu</category>
-    </item>
-    <item>
-      <title>告别硬编码：我的动态博客</title>
-      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Numerical%20Algorithms%2FNumerical%20Recipies%20in%20Cpp</link>
-      <guid isPermaLink="false">Numerical Algorithms/Numerical Recipies in Cpp</guid>
-      <description>采用全自动化的脚本扫描，以后只要丢入 Markdown 文件，网站就会自动更新。</description>
-      <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-      <category>Numerical Algorithms</category>
     </item>
     <item>
       <title>告别硬编码：我的动态博客</title>
