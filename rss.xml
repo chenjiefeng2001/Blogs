@@ -5,8 +5,16 @@
     <link>https://chenjiefeng2001.github.io/Blogs</link>
     <description>探索技术，记录思考 — 全自动化的现代静态博客引擎</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 17 Jun 2026 23:29:13 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 19:33:39 GMT</lastBuildDate>
     <atom:link href="https://chenjiefeng2001.github.io/Blogs/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Multi-thread Game Engine Design</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Game%20Engine%2FMulti-thread%20Game%20Engine%20Design</link>
+      <guid isPermaLink="false">Game Engine/Multi-thread Game Engine Design</guid>
+      <description>多线程游戏引擎设计，基于Direct3D的多线程技术开发</description>
+      <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Game Engine</category>
+    </item>
     <item>
       <title>Blender建模指南</title>
       <link>https://chenjiefeng2001.github.io/Blogs/#/post/Blender%2FBlender%E5%BB%BA%E6%A8%A1%E6%8C%87%E5%8D%97</link>
@@ -14,22 +22,6 @@
       <description>从零开始建模的记录，记录中间的一些坑和成果</description>
       <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
       <category>Blender</category>
-    </item>
-    <item>
-      <title>Physic Base Rendering</title>
-      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Computer%20Graphic%2FPBR%2FPBR</link>
-      <guid isPermaLink="false">Computer Graphic/PBR/PBR</guid>
-      <description>采用全自动化的脚本扫描，以后只要丢入 Markdown 文件，网站就会自动更新。</description>
-      <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
-      <category>Computer Graphic/PBR</category>
-    </item>
-    <item>
-      <title>Real Time Rendering</title>
-      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Computer%20Graphic%2FRTR%2FRTR</link>
-      <guid isPermaLink="false">Computer Graphic/RTR/RTR</guid>
-      <description>《Real Time Rendering》阅读笔记</description>
-      <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
-      <category>Computer Graphic/RTR</category>
     </item>
     <item>
       <title> 从零开始构建游戏引擎</title>
@@ -41,11 +33,75 @@
     </item>
     <item>
       <title></title>
-      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Game%20Engine%2FMulti-thread%20Game%20Engine%20Design</link>
-      <guid isPermaLink="false">Game Engine/Multi-thread Game Engine Design</guid>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Graphic%20Programming%2FGPU%20GEMS%20SERIES%2FGPU%20GEM%201</link>
+      <guid isPermaLink="false">Graphic Programming/GPU GEMS SERIES/GPU GEM 1</guid>
       <description></description>
       <pubDate>Invalid Date</pubDate>
-      <category>Game Engine</category>
+      <category>Graphic Programming/GPU GEMS SERIES</category>
+    </item>
+    <item>
+      <title></title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Graphic%20Programming%2FGPU%20GEMS%20SERIES%2FGPU%20GEM%202</link>
+      <guid isPermaLink="false">Graphic Programming/GPU GEMS SERIES/GPU GEM 2</guid>
+      <description></description>
+      <pubDate>Invalid Date</pubDate>
+      <category>Graphic Programming/GPU GEMS SERIES</category>
+    </item>
+    <item>
+      <title></title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Graphic%20Programming%2FGPU%20GEMS%20SERIES%2FGPU%20GEM%203</link>
+      <guid isPermaLink="false">Graphic Programming/GPU GEMS SERIES/GPU GEM 3</guid>
+      <description></description>
+      <pubDate>Invalid Date</pubDate>
+      <category>Graphic Programming/GPU GEMS SERIES</category>
+    </item>
+    <item>
+      <title></title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Graphic%20Programming%2FGPU%20ZENS%20SERIES%2FGPU%20ZENS%201</link>
+      <guid isPermaLink="false">Graphic Programming/GPU ZENS SERIES/GPU ZENS 1</guid>
+      <description></description>
+      <pubDate>Invalid Date</pubDate>
+      <category>Graphic Programming/GPU ZENS SERIES</category>
+    </item>
+    <item>
+      <title></title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Graphic%20Programming%2FGPU%20ZENS%20SERIES%2FGPU%20ZENS%202</link>
+      <guid isPermaLink="false">Graphic Programming/GPU ZENS SERIES/GPU ZENS 2</guid>
+      <description></description>
+      <pubDate>Invalid Date</pubDate>
+      <category>Graphic Programming/GPU ZENS SERIES</category>
+    </item>
+    <item>
+      <title></title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Graphic%20Programming%2FGPU%20ZENS%20SERIES%2FGPU%20ZENS%203</link>
+      <guid isPermaLink="false">Graphic Programming/GPU ZENS SERIES/GPU ZENS 3</guid>
+      <description></description>
+      <pubDate>Invalid Date</pubDate>
+      <category>Graphic Programming/GPU ZENS SERIES</category>
+    </item>
+    <item>
+      <title></title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Graphic%20Programming%2FGPU%20ZENS%20SERIES%2FGPU%20ZENS%204</link>
+      <guid isPermaLink="false">Graphic Programming/GPU ZENS SERIES/GPU ZENS 4</guid>
+      <description></description>
+      <pubDate>Invalid Date</pubDate>
+      <category>Graphic Programming/GPU ZENS SERIES</category>
+    </item>
+    <item>
+      <title>Physic Base Rendering</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Graphic%20Programming%2FPBR%2FPBR</link>
+      <guid isPermaLink="false">Graphic Programming/PBR/PBR</guid>
+      <description>采用全自动化的脚本扫描，以后只要丢入 Markdown 文件，网站就会自动更新。</description>
+      <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Graphic Programming/PBR</category>
+    </item>
+    <item>
+      <title>Real Time Rendering</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Graphic%20Programming%2FRTR%2FRTR</link>
+      <guid isPermaLink="false">Graphic Programming/RTR/RTR</guid>
+      <description>《Real Time Rendering》阅读笔记</description>
+      <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Graphic Programming/RTR</category>
     </item>
     <item>
       <title>Numerical Recipies in C++</title>
