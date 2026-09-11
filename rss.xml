@@ -5,7 +5,7 @@
     <link>https://chenjiefeng2001.github.io/Blogs</link>
     <description>探索技术，记录思考 — 全自动化的现代静态博客引擎</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 09 Sep 2026 13:39:18 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2026 15:28:30 GMT</lastBuildDate>
     <atom:link href="https://chenjiefeng2001.github.io/Blogs/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title> 垃圾回收手册 The Garbage Collection Handbook</title>
@@ -40,22 +40,6 @@
       <category>Blender</category>
     </item>
     <item>
-      <title>Physic Base Rendering</title>
-      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Graphic%20Programming%2FPBR%2FPBR</link>
-      <guid isPermaLink="false">Graphic Programming/PBR/PBR</guid>
-      <description>采用全自动化的脚本扫描，以后只要丢入 Markdown 文件，网站就会自动更新。</description>
-      <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
-      <category>Graphic Programming/PBR</category>
-    </item>
-    <item>
-      <title>Real Time Rendering</title>
-      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Graphic%20Programming%2FRTR%2FRTR</link>
-      <guid isPermaLink="false">Graphic Programming/RTR/RTR</guid>
-      <description>《Real Time Rendering》阅读笔记</description>
-      <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
-      <category>Graphic Programming/RTR</category>
-    </item>
-    <item>
       <title>Numerical Recipies in C++</title>
       <link>https://chenjiefeng2001.github.io/Blogs/#/post/Numerical%20Algorithms%2FNumerical%20Recipies%20in%20Cpp</link>
       <guid isPermaLink="false">Numerical Algorithms/Numerical Recipies in Cpp</guid>
@@ -70,6 +54,22 @@
       <description>采用全自动化的脚本扫描，以后只要丢入 Markdown 文件，网站就会自动更新。</description>
       <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
       <category>The Art of Multiprocessor</category>
+    </item>
+    <item>
+      <title>Physic Base Rendering</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Graphic%20Programming%2FPBR%2FPBR</link>
+      <guid isPermaLink="false">Graphic Programming/PBR/PBR</guid>
+      <description>采用全自动化的脚本扫描，以后只要丢入 Markdown 文件，网站就会自动更新。</description>
+      <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Graphic Programming/PBR</category>
+    </item>
+    <item>
+      <title>Real Time Rendering</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Graphic%20Programming%2FRTR%2FRTR</link>
+      <guid isPermaLink="false">Graphic Programming/RTR/RTR</guid>
+      <description>《Real Time Rendering》阅读笔记</description>
+      <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Graphic Programming/RTR</category>
     </item>
     <item>
       <title> 从零开始构建游戏引擎</title>
