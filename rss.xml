@@ -5,7 +5,7 @@
     <link>https://chenjiefeng2001.github.io/Blogs</link>
     <description>探索技术，记录思考 — 全自动化的现代静态博客引擎</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 11 Sep 2026 16:00:56 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2026 16:10:19 GMT</lastBuildDate>
     <atom:link href="https://chenjiefeng2001.github.io/Blogs/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title> 垃圾回收手册 The Garbage Collection Handbook</title>
@@ -40,20 +40,20 @@
       <category>Blender</category>
     </item>
     <item>
-      <title>Numerical Recipies in C++</title>
-      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Numerical%20Algorithms%2FNumerical%20Recipies%20in%20Cpp</link>
-      <guid isPermaLink="false">Numerical Algorithms/Numerical Recipies in Cpp</guid>
-      <description>有关于数值算法的书籍阅读笔记</description>
-      <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
-      <category>Numerical Algorithms</category>
-    </item>
-    <item>
       <title>The Art of MultiProcessor</title>
       <link>https://chenjiefeng2001.github.io/Blogs/#/post/The%20Art%20of%20Multiprocessor%2FThe%20Art%20of%20MultiProcessor</link>
       <guid isPermaLink="false">The Art of Multiprocessor/The Art of MultiProcessor</guid>
       <description>采用全自动化的脚本扫描，以后只要丢入 Markdown 文件，网站就会自动更新。</description>
       <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
       <category>The Art of Multiprocessor</category>
+    </item>
+    <item>
+      <title>Numerical Recipies in C++</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Numerical%20Algorithms%2FNumerical%20Recipies%20in%20Cpp</link>
+      <guid isPermaLink="false">Numerical Algorithms/Numerical Recipies in Cpp</guid>
+      <description>有关于数值算法的书籍阅读笔记</description>
+      <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Numerical Algorithms</category>
     </item>
     <item>
       <title>Physic Base Rendering</title>
