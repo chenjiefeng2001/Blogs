@@ -5,8 +5,32 @@
     <link>https://chenjiefeng2001.github.io/Blogs</link>
     <description>探索技术，记录思考 — 全自动化的现代静态博客引擎</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 11 Sep 2026 17:37:39 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2026 17:43:20 GMT</lastBuildDate>
     <atom:link href="https://chenjiefeng2001.github.io/Blogs/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>浏览器事件循环详解（交互式图解）</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/javascript%2Fjs-event-loop</link>
+      <guid isPermaLink="false">javascript/js-event-loop</guid>
+      <description>通过分步交互式 SVG 图解，理解 JavaScript 事件循环中调用栈、微任务队列与宏任务的执行顺序。</description>
+      <pubDate>Mon, 14 Sep 2026 00:00:00 GMT</pubDate>
+      <category>javascript</category>
+    </item>
+    <item>
+      <title>Model Selection And Inference</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Data%20Models%2FModel%20Selection%20And%20Inference</link>
+      <guid isPermaLink="false">Data Models/Model Selection And Inference</guid>
+      <description>对于在数学建模中的模型选择和推理实用的信息理论方法</description>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 GMT</pubDate>
+      <category>Data Models</category>
+    </item>
+    <item>
+      <title>TCP 三次握手详解（交互式图解）</title>
+      <link>https://chenjiefeng2001.github.io/Blogs/#/post/Network%2Ftcp-handshake</link>
+      <guid isPermaLink="false">Network/tcp-handshake</guid>
+      <description>通过分步交互式 SVG 图解，理解 TCP 建立连接的三次握手过程。</description>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
+      <category>Network</category>
+    </item>
     <item>
       <title> 垃圾回收手册 The Garbage Collection Handbook</title>
       <link>https://chenjiefeng2001.github.io/Blogs/#/post/others%2F%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%89%8B%E5%86%8C</link>

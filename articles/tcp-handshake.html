@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TCP 三次握手 · 交互式解释</title>
+<style>
+  :root {
+    --bg: #0b1020;
+    --card: #111827;
+    --card-2: #0f172a;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+    --border: rgba(148, 163, 184, 0.15);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 600px at 20% 10%, rgba(56,189,248,0.12), transparent 40%),
+      radial-gradient(900px 500px at 80% 30%, rgba(16,185,129,0.10), transparent 40%),
+      var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 920px; margin: 0 auto; padding: 56px 24px 96px; }
+  h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 8px; }
+  .sub { color: var(--muted); font-size: 15px; margin: 0 0 28px; }
+  .card {
+    background: linear-gradient(180deg, var(--card), var(--card-2));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.04) inset;
+    padding: 24px;
+  }
+  .stage { background: #0a0f1c; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  #tcp-svg-container { width: 100%; height: 340px; }
+  .stepbar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);
+  }
+  .controls { display: inline-flex; gap: 10px; }
+  button {
+    appearance: none; border: 1px solid var(--border); color: var(--text);
+    background: rgba(148,163,184,0.08); font: 600 13px/1 Inter, system-ui, sans-serif;
+    padding: 10px 16px; border-radius: 10px; cursor: pointer;
+    transition: transform .12s ease, background .12s ease, border-color .12s ease;
+  }
+  button:hover { background: rgba(148,163,184,0.15); border-color: rgba(148,163,184,0.3); transform: translateY(-1px); }
+  button:active { transform: translateY(0); }
+  .step-label { color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: 0.02em; }
+  .legend { color: var(--muted); font-size: 13px; margin-top: 18px; }
+  code { color: var(--accent); background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.2); padding: 1px 6px; border-radius: 6px; font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+  .steps-text { display: grid; gap: 10px; margin-top: 22px; }
+  .step-item { display: flex; gap: 12px; color: var(--muted); font-size: 14px; }
+  .step-item .n { flex: 0 0 26px; height: 26px; line-height: 26px; text-align: center; border-radius: 8px; background: rgba(56,189,248,0.12); color: var(--accent); font-weight: 700; font-size: 12px; }
+</style>
+</head>
+<body>
+  <div class="page">
+    <h1>TCP 三次握手</h1>
+    <p class="sub">通过“客户端 ↤⟷↤ 服务器”的状态迁移图，观察 <code>SYN</code>、<code>SYN+ACK</code>、<code>ACK</code> 的顺序与方向。</p>
+
+    <div class="card">
+      <div class="stage">
+        <div id="tcp-svg-container"></div>
+      </div>
+      <div class="stepbar">
+        <div class="controls">
+          <button id="prev-btn" aria-label="上一步">← 上一步</button>
+          <button id="next-btn" aria-label="下一步">下一步 →</button>
+        </div>
+        <div class="step-label" id="step-display"></div>
+      </div>
+    </div>
+
+    <div class="steps-text">
+      <div class="step-item"><span class="n">1</span><span><strong style="color:var(--text)">SYN</strong> · Client 发起连接（seq = x）</span></div>
+      <div class="step-item"><span class="n">2</span><span><strong style="color:var(--text)">SYN+ACK</strong> · Server 收到并回应（ack = x+1, seq = y）</span></div>
+      <div class="step-item"><span class="n">3</span><span><strong style="color:var(--text)">ACK</strong> · Client 确认（ack = y+1），连接建立</span></div>
+    </div>
+
+    <p class="legend">提示：可使用键盘 ← / → 按钮切换步骤。此为 SVG 随状态全量重建的交互式图解。</p>
+  </div>
+
+  <script type="module">
+    import { tcpHandshakeVis, PlaybackController, SVGRenderer } from '../assets/tech-svg/tech-svg.browser.js';
+
+    const container = document.getElementById('tcp-svg-container');
+    const renderer = new SVGRenderer(container);
+    const controller = new PlaybackController(tcpHandshakeVis, renderer);
+    controller.seek(0, false);
+
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const stepDisplay = document.getElementById('step-display');
+
+    function update() {
+      stepDisplay.textContent = `步骤 ${controller.getCurrentStep()} / ${tcpHandshakeVis.totalSteps - 1}`;
+    }
+    update();
+
+    prevBtn.addEventListener('click', () => { controller.prev(); update(); });
+    nextBtn.addEventListener('click', () => { controller.next(); update(); });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { controller.prev(); update(); }
+      if (e.key === 'ArrowRight') { controller.next(); update(); }
+    });
+  </script>
+</body>
+</html>
